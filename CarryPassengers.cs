@@ -7,7 +7,6 @@ public class CarryPassengers : RaycastController {
 	// Variables
 	[Tooltip ("Objects on this layer can be moved by this game object.")]
 	public LayerMask passengerMask;
-	public Vector2 velocity;
 
 	List <PassengerMovement> passengerMovement;
 	Dictionary <Transform, Controller2D> passengerDictionary = new Dictionary <Transform, Controller2D> ();
@@ -15,10 +14,10 @@ public class CarryPassengers : RaycastController {
 
 	// Moves the passengers
 	public void MovePassengers (bool beforeMovePlatform) {
-		Debug.Log ("CarryPassengers.cs MovePassengers received.");
+		Debug.Log ("CarryPassengers.cs MovePassengers received.");	// NOTE: This is being called twice for some reason
 		foreach (PassengerMovement passenger in passengerMovement) {
 			if (!passengerDictionary.ContainsKey (passenger.transform)) {
-				Debug.Log ("Passenger added.");
+				Debug.Log ("Passenger added.");						// NOTE: This is being called late
 				passengerDictionary.Add (passenger.transform, passenger.transform.GetComponent <Controller2D>());
 			}
 
@@ -30,7 +29,7 @@ public class CarryPassengers : RaycastController {
 
 	// 
 	public void CalculatePassengerMovement (Vector2 velocity) {
-		Debug.Log ("CarryPassengers.cs CalculatePassengerMovement received.");
+//		Debug.Log ("CarryPassengers.cs CalculatePassengerMovement received.");
 		HashSet <Transform> movedPassengers = new HashSet <Transform> ();
 		passengerMovement = new List <PassengerMovement> ();
 
