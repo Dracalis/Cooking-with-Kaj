@@ -88,7 +88,6 @@ public class WaypointMovement : RaycastController {
 
 		// If this object has CarryPassengers.cs attached, calculate movement and move passengers
 		if (carryPassengers != null) {
-			carryPassengers.velocity = velocity;
 			carryPassengers.CalculatePassengerMovement (velocity);
 			carryPassengers.MovePassengers (true);
 		}
